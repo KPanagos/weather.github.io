@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wetather_Forecast_webSite</title>
+    <style>
+        /* Λειτουργία Σκούρασης */
+        body.dark-mode {
+            background-color: #1a5997;
+            color: rgba(208, 209, 212, 0.39);
+        }
+        /* Κινούμενα Στοιχεία */
+        .animated {
+            position: absolute;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Πίνακας Περιεχομένων -->
+    <nav>
+        <h2>Πίνακας Περιεχομένων</h2>
+        <ul>
+            <li><a href="#photos">Φωτογραφίες</a></li>
+            <li><a href="#faq">Συχνές Ερωτήσεις</a></li>
+            <li><a href="#sorting">Ταξινόμηση Εικόνων</a></li>
+            <li><a href="#comments">Σχόλια</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1 id="photos">Weather Forecast of Variables 2018-2026 </h1>
+    </header>
+
+    <!-- Ενότητα για Φωτογραφίες -->
+    <section id="photos">
+        <h2>Φωτογραφίες</h2>
+        <img src='index.png'/>
+        <img src='radiation2.png'/>
+        <img src='pressure.png'/>
+        <img src='wind.png'/>
+        <img src='precipitation.png'/>
+        <img src='temperature.png'/>
+        <!-- ... -->
+    </section>
+
+    <!-- Ενότητα για Συχνές Ερωτήσεις (FAQ) -->
+    <section id="faq">
+        <h2>Συχνές Ερωτήσεις (FAQ)</h2>
+        <details>
+            <summary>Τι παρουσιάζουν οι παραπάνω εικόνες ;</summary>
+            <p>Οι παραπάνω εικώνες παρουσιάζουν με την σειρά που αναγράγονται απο αριστερά προς τα δεξιά τα εξής :
+                a)Εκτίμηση μελλοντικών τιμών , εως το έτος 2026 για τα επίπεδα ακτινοβολίας στην Ελλαδα.
+                b)Εκτίμηση μελλοντικών τιμών , εως το έτος 2026 για τα επίπεδα </p>
+        </details>
+        <!-- ... -->
+    </section>
+
+    <!-- Ενότητα για Ταξινόμηση Εικόνων -->
+    <section id="sorting">
+        <h2>Ταξινόμηση Εικόνων</h2>
+        <button onclick="sortImages()">Ταξινόμηση Εικόνων</button>
+    </section>
+
+    <!-- Ενότητα για Σχόλια -->
+    <section id="comments">
+        <h2>Σχόλια</h2>
+        <textarea id="commentArea" rows="4" cols="50"></textarea><br>
+        <button onclick="submitComment()">Υποβολή Σχολίου</button>
+        <div id="commentsSection"></div>
+    </section>
+
+
+    <!-- Ποπ-Άπ -->
+    <div id="popup" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(230, 207, 207, 0.5);">
+        <div style="margin: 20% auto; padding: 20px; background-color: #c8f309; width: 50%;">
+            <p>Αυτό είναι ένα ποπ-άπ!</p>
+            <button onclick="togglePopup()">Κλείσιμο</button>
+        </div>
+    </div>
+
+    <!-- Λειτουργία Σκούρασης -->
+    <button onclick="toggleTheme()">Αλλαγή Θέματος</button>
+
+    <!-- Ζωντανή Ώρα -->
+    <div id="liveTime"></div>
+
+    <script>
+        // Λειτουργία Σκούρασης
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Ζωντανή Ώρα
+        function updateLiveTime() {
+            const now = new Date();
+            document.getElementById('liveTime').innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateLiveTime, 1000);
+
+        // Ποπ-Άπ
+        function togglePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Κινούμενα Στοιχεία
+        const animatedDiv = document.querySelector('.animated');
+        let position = 0;
+        function moveDiv() {
+            position++;
+            animatedDiv.style.left = position + 'px';
+        }
+        setInterval(moveDiv, 50);
+
+        // ... Υπόλοιπος κώδικας JavaScript ...
+    </script>
+
+</body>
+</html>
